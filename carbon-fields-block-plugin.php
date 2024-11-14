@@ -3,7 +3,7 @@
 Plugin Name: WP Anber Pricing Plan 
 Plugin URI: https://github.com/frahim/
 Description: WP Anber Pricing Plan 
-Version: 1.0.1
+Version: 1.1.1
 Author: Md Yeasir Arafat
 Author URI: https://github.com/frahim
 Text Domain: wpfs
