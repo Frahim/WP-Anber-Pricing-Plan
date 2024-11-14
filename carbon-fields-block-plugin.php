@@ -33,18 +33,19 @@ add_action( 'enqueue_block_assets', function() {
 
 
 // Update Chacker
-if (file_exists(WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php')) {
-    require_once WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php';
-}
+//if (file_exists(WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php')) {
+//    require_once WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php';
+//}
+require WPAPP_CORE_INC . 'plugin-update-checker/plugin-update-checker.php';
 
-// Start the update checker
-use Puc_v4_Factory;
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-$updateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://github.com/Frahim/WP-Anber-Pricing-Plan', // GitHub repo URL
-    __FILE__,                                             // Full path to the main plugin file
-    'WP-Anber-Pricing-Plan'                                    // Plugin slug (used as identifier)
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/Frahim/WP-Anber-Pricing-Plan',
+	__FILE__, //Full path to the main plugin file or functions.php.
+	'WP-Anber-Pricing-Plan'
 );
 
-// Optional: Set the branch to use for updates (e.g., 'main' or 'master')
-$updateChecker->setBranch('main');
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
