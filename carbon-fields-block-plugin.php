@@ -3,7 +3,7 @@
 Plugin Name: WP Anber Pricing Plan 
 Plugin URI: https://github.com/frahim/
 Description: WP Anber Pricing Plan 
-Version: 1.0.0
+Version: 1.0.1
 Author: Md Yeasir Arafat
 Author URI: https://github.com/frahim
 Text Domain: wpfs
@@ -32,3 +32,19 @@ add_action( 'enqueue_block_assets', function() {
 } );
 
 
+// Update Chacker
+if (file_exists(WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php')) {
+    require_once WPAPP_CORE_INC . '/plugin-update-checker/plugin-update-checker.php';
+}
+
+// Start the update checker
+use Puc_v4_Factory;
+
+$updateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/Frahim/WP-Anber-Pricing-Plan', // GitHub repo URL
+    __FILE__,                                             // Full path to the main plugin file
+    'WP-Anber-Pricing-Plan'                                    // Plugin slug (used as identifier)
+);
+
+// Optional: Set the branch to use for updates (e.g., 'main' or 'master')
+$updateChecker->setBranch('main');

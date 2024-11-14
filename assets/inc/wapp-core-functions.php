@@ -10,8 +10,6 @@
 // If this file is called directly, abort. //
 
 
-
-
 use Carbon_Fields\Carbon_Fields;
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
@@ -23,9 +21,7 @@ if (class_exists('Carbon_Fields')) {
         Carbon_Fields::boot();
     });
 }
-//add_action('after_setup_theme', function () {
-//    Carbon_Fields::boot();
-//});
+
 
 add_action('carbon_fields_register_fields', function () {
     Block::make(__('Pricing Block', 'carbon-fields'))
@@ -76,8 +72,9 @@ add_action('carbon_fields_register_fields', function () {
                                 <h3><?php echo esc_html($item['wpapp_pricing_price']); ?></h3><span><?php echo esc_html($item['wpapp_pricing_price_text']); ?></span>
                             </div>
                             <span><?php echo esc_html($item['wpapp_pricing_price_desc']); ?></span>
+                            <div class="letstalkBtn triggers">
                             <a class="price_btn" href="<?php echo esc_html($item['wpapp_pricing_btn_url']); ?>"><?php echo esc_html($item['wpapp_pricing_btn_text']); ?></a>
-
+                            </div>
                             <ul>
                                 <?php foreach ($item['wpapp_pricing_item_feature'] as $fitem) { ?>
                                     <li>
